@@ -1,0 +1,24 @@
+name: Tag and Release
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+          ref: ${{ github.ref_name }}
+
+      - name: version-tag
+        id: tag
+        uses: anothrNick/github-tag-action@master
+        env:
+          VERBOSE: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
