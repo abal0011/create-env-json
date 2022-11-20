@@ -10,17 +10,17 @@ var obj = {};
 
 Object.keys(process.env).forEach(function(key) {
   if(key.startsWith(inputPrefix) && key != "INPUT_FILE-NAME") {
-    obj[key.substring(inputPrefix.length)] = process.env[key];
+    obj[key.substring(inputPrefix.length).toLocaleLowerCase()] = process.env[key];
   }
 });
-  
+
 const fileContent = JSON.stringify(obj);
 
 fs.writeFile(fullPath, fileContent, function (error) {
   if (error) {
     core.setFailed(error.message);
   }
-  
+
   console.log(`Successfully written file ${fullPath} with content ${fileContent}`);
   core.setOutput("full-path", fullPath);
 });
