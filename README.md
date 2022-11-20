@@ -14,7 +14,7 @@ This action writes environment variables (or anything you want) to a JSON file t
 ## Usage
 
 ```
-uses: schdck/create-env-json@v1
+uses: abal0011/create-env-json@master
 id: create-env
 with:
   file-name: 'env.json'
