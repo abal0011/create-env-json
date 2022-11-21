@@ -24,7 +24,7 @@ jobs:
           ref: ${{ github.ref_name }}
 
       - name: version-tag
-        id: tag
+        id: tag_version
         uses: anothrNick/github-tag-action@master
         env:
           VERBOSE: true
